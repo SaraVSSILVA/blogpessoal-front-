@@ -1,4 +1,4 @@
-import type Theme from './Theme';
+import type Theme from './Tema';
 import type User from './User';
 
 export default interface Post {
@@ -7,5 +7,5 @@ export default interface Post {
   text: string;
   date: string;
   thema: Theme | null;
-  user: User | null;
+  username: User | null;
 }
