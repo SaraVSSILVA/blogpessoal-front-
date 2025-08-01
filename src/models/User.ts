@@ -1,6 +1,7 @@
 import type Post from './Post';
 
 export default interface User {
+  token: string;
   id: number;
   name: string;
   user: string; // Geralmente é o e-mail do usuário

@@ -12,7 +12,7 @@ const api = axios.create({
  * @param dados Objeto do usuário para cadastro, sem o ID.
  * @returns A promise com os dados do usuário cadastrado.
  */
-export const cadastrarUsuario = async (url: string, dados: Omit<User, 'id'>): Promise<User> => {
+export const cadastrarUsuario = async (url: string, dados: Omit<User, 'id'>, setUser: unknown): Promise<User> => {
     const { data } = await api.post<User>(url, dados);
     return data;
 }
