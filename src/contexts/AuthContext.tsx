@@ -21,10 +21,9 @@ export const AuthContext = createContext<AuthContextProps>({
     user: {
         id: 0,
         name: "",
-        username: "",
+        user: "",
         password: "",
         photo: "",
-        token: ""
     },
     handleLogout: () => {},
     handleLogin: async () => {},
@@ -36,10 +35,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const [user, setUser] = useState<User>({
         id: 0,
         name: "",
-        username: "",
+        user: "",
         password: "",
         photo: "",
-        token: ""
     });
 
     const [isLoading, setIsLoading] = useState(false);
@@ -62,10 +60,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
         setUser({
             id: 0,
             name: "",
-            username: "",
+            user: "",
             password: "",
             photo: "",
-            token: ""
         });
     }
 

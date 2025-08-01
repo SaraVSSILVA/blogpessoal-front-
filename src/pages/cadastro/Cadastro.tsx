@@ -17,12 +17,10 @@ function Cadastro() {
   const [user, setUser] = useState<User>({
     id: 0,
     name: '',
-    username: '', 
+    user: '', 
     password: '', 
     photo: '',
-    
-    token: '',
-  });
+      });
 
   useEffect(() => {
     ''
@@ -42,7 +40,7 @@ function Cadastro() {
     });
   }
 
-  function handleConfirmPasswordChange(e: ChangeEvent<HTMLInputElement>) { /
+  function handleConfirmPasswordChange(e: ChangeEvent<HTMLInputElement>) {
     setConfirmPassword(e.target.value);
   }
 
@@ -58,6 +56,7 @@ function Cadastro() {
         
         await cadastrarUsuario(`/users/register`, user); 
         alert('Usuário cadastrado com sucesso!');
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         alert('Erro ao cadastrar o usuário!');
       } finally { 
@@ -79,10 +78,10 @@ function Cadastro() {
           place-items-center font-bold">
         <div className="fundoCadastro hidden lg:block"></div>
         <form className='flex justify-center items-center flex-col w-2/3 gap-3'
-          onSubmit={registerNewUser}> {/* Nome da função alterado */}
+          onSubmit={registerNewUser}> {}
           <h2 className='text-slate-900 text-5xl'>Cadastrar</h2>
           <div className="flex flex-col w-full">
-            <label htmlFor="name">Nome</label> {/* Label em português */}
+            <label htmlFor="name">Nome</label> {}
             <input
               type="text"
               id="name"
@@ -94,19 +93,19 @@ function Cadastro() {
             />
           </div>
           <div className="flex flex-col w-full">
-            <label htmlFor="username">Usuário</label> {/* Label em português */}
+            <label htmlFor="user">Usuário</label> {}
             <input
               type="text"
-              id="username"
-              name="username" 
+              id="user"
+              name="user" 
               placeholder="Usuário" 
               className="border-2 border-slate-700 rounded p-2"
-              value={user.username} 
+              value={user.user} 
               onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange(e)} 
             />
           </div>
           <div className="flex flex-col w-full">
-            <label htmlFor="photo">Foto</label> {/* Label em português */}
+            <label htmlFor="photo">Foto</label> {}
             <input
               type="text"
               id="photo"
@@ -118,7 +117,7 @@ function Cadastro() {
             />
           </div>
           <div className="flex flex-col w-full">
-            <label htmlFor="password">Senha</label> {/* Label em português */}
+            <label htmlFor="password">Senha</label> {}
             <input
               type="password"
               id="password"
@@ -130,7 +129,7 @@ function Cadastro() {
             />
           </div>
           <div className="flex flex-col w-full">
-            <label htmlFor="confirmPassword">Confirmar Senha</label> {/* Label em português */}
+            <label htmlFor="confirmPassword">Confirmar Senha</label> {}
             <input
               type="password"
               id="confirmPassword" 
