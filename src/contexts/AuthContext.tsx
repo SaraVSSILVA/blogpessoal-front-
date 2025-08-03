@@ -1,12 +1,11 @@
 import { createContext, type ReactNode, useState } from "react";
 import { login } from "../services/Service";
-import type User from "../models/User";
 import type UserLogin from "../models/UserLogin";
 
 
 
 interface AuthContextProps {
-    user: User;
+    user: UserLogin;
     handleLogout(): void;
     handleLogin(userLogin: UserLogin): Promise<void>;
     isLoading: boolean;
@@ -24,6 +23,7 @@ export const AuthContext = createContext<AuthContextProps>({
         user: "",
         password: "",
         photo: "",
+        token: ""
     },
     handleLogout: () => {},
     handleLogin: async () => {},
@@ -32,12 +32,13 @@ export const AuthContext = createContext<AuthContextProps>({
 
 export function AuthProvider({ children }: AuthProviderProps) {
 
-    const [user, setUser] = useState<User>({
+    const [user, setUser] = useState<UserLogin>({
         id: 0,
         name: "",
         user: "",
         password: "",
         photo: "",
+        token: ""
     });
 
     const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +46,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     async function handleLogin(userLogin: UserLogin) {
         setIsLoading(true);
         try {
-            const data = await login(`/usuarios/logar`, userLogin);
+            const data = await login(`/users/login`, userLogin);
             setUser(data);
             alert("Usuário logado com sucesso!");
             setIsLoading(false);
@@ -63,6 +64,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
             user: "",
             password: "",
             photo: "",
+        token: ""
         });
     }
 

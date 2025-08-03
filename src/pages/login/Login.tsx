@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 import { AuthContext } from '../../contexts/AuthContext';
-import { type ChangeEvent, useContext, useEffect, useState } from 'react';
+import { type ChangeEvent, useContext, useEffect, useState, type FormEvent } from 'react';
 import type UserLogin from '../../models/UserLogin';
 import { RotatingLines } from 'react-loader-spinner';
 
@@ -12,14 +12,21 @@ function Login() {
     const { user, handleLogin, isLoading } = useContext(AuthContext)
 
     const [userLogin, setUserLogin] = useState<UserLogin>(
-        {} as UserLogin
+        {
+            id: 0,
+            name: '',
+            user: '',
+            password: '',
+            photo: '',
+            token: ''
+        }
     )
 
     useEffect(() => {
         if (user.token !== "") {
             navigate('/home')
         }
-    }, [user])
+    }, [user.token, navigate])
 
     function updateState(e: ChangeEvent<HTMLInputElement>) {
         setUserLogin({
@@ -28,7 +35,7 @@ function Login() {
         })
     }
 
-    function login(e: ChangeEvent<HTMLFormElement>) {
+    function login(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
         handleLogin(userLogin)
     }
@@ -56,8 +63,8 @@ function Login() {
                         <label htmlFor="senha">Senha</label>
                         <input
                             type="password"
-                            id="senha"
-                            name="senha"
+                            id="password"
+                            name="password"
                             placeholder="Senha"
                             className="border-2 border-slate-700 rounded p-2"
                             value={userLogin.password}

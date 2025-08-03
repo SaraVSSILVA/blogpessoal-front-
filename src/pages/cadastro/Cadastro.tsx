@@ -1,4 +1,4 @@
-import { useState, useEffect, type ChangeEvent, type FormEvent } from 'react'
+import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type User from '../../models/User'
 import { cadastrarUsuario } from '../../services/Service'
@@ -20,14 +20,7 @@ function Cadastro() {
     password: '',
     photo: ''
   })
-  
-  useEffect(() => {
-    if (user.id !== 0){
-      retornar()
-    }
-  }, [retornar, user])
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   function retornar(){
     navigate('/login')
   }
@@ -37,7 +30,6 @@ function Cadastro() {
       ...user,
       [e.target.name]: e.target.value
     })
-
   }
 
   function handleConfirmarSenha(e: ChangeEvent<HTMLInputElement>){
@@ -52,8 +44,9 @@ function Cadastro() {
       setIsLoading(true)
 
       try{
-        await cadastrarUsuario(`/users/register`, user, setUser)
+        await cadastrarUsuario(`/usuarios/cadastrar`, user)
         alert('Usuário cadastrado com sucesso!')
+        retornar()
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       }catch(error){
         alert('Erro ao cadastrar o usuário!')
@@ -79,8 +72,8 @@ function Cadastro() {
             <label htmlFor="nome">Nome</label>
             <input
               type="text"
-              id="nome"
-              name="nome"
+              id="name"
+              name="name"
               placeholder="Nome"
               className="border-2 border-slate-700 rounded p-2"
              value = {user.name}
@@ -91,8 +84,8 @@ function Cadastro() {
             <label htmlFor="usuario">Usuario</label>
             <input
               type="text"
-              id="usuario"
-              name="usuario"
+              id="user"
+              name="user"
               placeholder="Usuario"
               className="border-2 border-slate-700 rounded p-2"
               value = {user.user}
@@ -103,8 +96,8 @@ function Cadastro() {
             <label htmlFor="foto">Foto</label>
             <input
               type="text"
-              id="foto"
-              name="foto"
+              id="photo"
+              name="photo"
               placeholder="Foto"
               className="border-2 border-slate-700 rounded p-2"
               value = {user.photo}
@@ -115,8 +108,8 @@ function Cadastro() {
             <label htmlFor="senha">Senha</label>
             <input
               type="password"
-              id="senha"
-              name="senha"
+              id="password"
+              name="password"
               placeholder="Senha"
               className="border-2 border-slate-700 rounded p-2"
               value = {user.password}

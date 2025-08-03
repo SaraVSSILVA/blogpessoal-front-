@@ -6,6 +6,8 @@ import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Cadastro from './pages/cadastro/Cadastro';
 import './App.css';
+import ListaTemas from './components/temas/listaTemas/ListaTemas';
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/theme" element={<ListaTemas />} />
           </Routes>
         </div>
         <Footer />
