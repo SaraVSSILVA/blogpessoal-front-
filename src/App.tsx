@@ -20,7 +20,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/theme" element={<ListaTemas />} />
+            <Route path="/themes" element={<ListaTemas />} />
           </Routes>
         </div>
         <Footer />
