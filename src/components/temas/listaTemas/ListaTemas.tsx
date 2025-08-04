@@ -29,7 +29,7 @@ function ListaTemas() {
                 })
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             } catch (error: any) {
-                if (error.toString().includes('403')) {
+                if (error.toString().includes('401')) {
                     alert('O token expirou, favor logar novamente');
                     handleLogout()
                 }
