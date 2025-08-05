@@ -6,6 +6,6 @@ export default interface Post {
   title: string;
   text: string;
   date: string;
-  thema: Theme | null;
+  theme: Theme | null;
   username: User | null;
 }

@@ -25,11 +25,12 @@ function Navbar() {
 <Link to='/home' className="text-2xl font-bold">Ecos de Papel</Link>
 
                     <div className='flex gap-4'>
-                        Postagens
+                        <Link to='/postagens' className='hover:underline'>Postagens</Link>
                         <Link to='/themes' className='hover:underline'>Temas</Link>
-                        Cadastrar tema
+                        <Link to='/cadastrartema' className='hover:underline'>Cadastrar tema</Link>
                         Perfil
                         <Link to='' onClick={logout} className='hover:underline'>Sair</Link>
+
                     </div>
                 </div>
             </div>
