@@ -15,9 +15,9 @@ function CardPostagem({ postagem }: CardPostagensProps) {
                     <img
                         src={postagem.username?.photo}
                         className='h-12 rounded-full'
-                        alt={postagem.username?.photo} />
+                        alt={postagem.username?.name} />
                     <h3 className='text-lg font-bold text-center uppercase'>
-                        {postagem.username?.photo}
+                        {postagem.username?.name}
                     </h3>
                 </div>
                 <div className='p-4 '>
@@ -31,10 +31,10 @@ function CardPostagem({ postagem }: CardPostagensProps) {
                 </div>
             </div>
             <div className="flex">
-                <Link to='' 
-                    className='w-full text-white bg-indigo-400 
-                    hover:bg-indigo-800 flex items-center justify-center py-2'>
-                    <button>Editar</button>
+                 <Link to={`/editarpost/${postagem.id}`}
+	                className='w-full text-slate-100 bg-indigo-400 hover:bg-indigo-800 
+               flex items-center justify-center py-2'>
+	           <button>Editar</button>
                 </Link>
                 <Link to='' 
                     className='text-white bg-red-400 

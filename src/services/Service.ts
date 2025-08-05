@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-function-type */
 import axios from "axios";
+import { type Dispatch, type SetStateAction } from "react";
 import type User from "../models/User";
 import type UserLogin from "../models/UserLogin";
 
@@ -24,22 +24,21 @@ export const login = async (url: string, dados: UserLogin): Promise<UserLogin> =
     return data;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
-export const buscar = async (url: string, setDados: Function, header: Object) => {
-    const resposta = await api.get(url, header)
-    setDados(resposta.data)
+export const buscar = async <T>(url: string, setDados: Dispatch<SetStateAction<T>>, header: object) => {
+    const resposta = await api.get<T>(url, header);
+    setDados(resposta.data);
 }
 
-export const cadastrar = async (url: string, dados: object, setDados: Function, header: object) => {
-    const resposta = await api.post(url, dados, header)
-    setDados(resposta.data)
+export const cadastrar = async <T>(url: string, dados: object, setDados: Dispatch<SetStateAction<T>>, header: object) => {
+    const resposta = await api.post<T>(url, dados, header);
+    setDados(resposta.data);
 }
 
-export const atualizar = async (url: string, dados: object, setDados: Function, header: object) => {
-    const resposta = await api.put(url, dados, header)
-    setDados(resposta.data)
+export const atualizar = async <T>(url: string, dados: object, setDados: Dispatch<SetStateAction<T>>, header: object) => {
+    const resposta = await api.put<T>(url, dados, header);
+    setDados(resposta.data);
 }
 
 export const deletar = async (url: string, header: object) => {
-    await api.delete(url, header)
+    await api.delete(url, header);
 }
