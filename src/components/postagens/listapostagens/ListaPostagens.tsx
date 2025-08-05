@@ -19,7 +19,7 @@ function ListaPostagens() {
 
     async function buscarPostagens() {
         try {
-            await buscar('/postagens', setPostagens, {
+            await buscar('/posts', setPostagens, {
                 headers: {
                     Authorization: token,
                 },
@@ -41,7 +41,7 @@ function ListaPostagens() {
 
     useEffect(() => {
         buscarPostagens()
-    }, [postagens.length])
+    }, [token])
 
     return (
         <>

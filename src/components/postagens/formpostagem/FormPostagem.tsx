@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { type ChangeEvent, useContext, useEffect, useState } from 'react';
+import  { type ChangeEvent, useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthContext';
 import type Post from '../../../models/Post';
@@ -30,7 +30,7 @@ function FormPostagem() {
   });
 
   async function buscarPostagemPorId(id: string) {
-    await buscar(`/postagens/${id}`, setPostagem, {
+    await buscar(`/posts/${id}`, setPostagem, {
       headers: {
         Authorization: token,
       },
@@ -89,9 +89,11 @@ function FormPostagem() {
   async function gerarNovaPostagem(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    const postagemParaEnvio = { ...postagem, date: new Date().toISOString() };
+
     if (id !== undefined) {
       try {
-        await atualizar(`/postagens`, postagem, setPostagem, {
+        await atualizar(`/posts`, postagemParaEnvio, setPostagem, {
           headers: {
             Authorization: token,
           },
@@ -108,7 +110,7 @@ function FormPostagem() {
       }
     } else {
       try {
-        await cadastrar(`/postagens`, postagem, setPostagem, {
+        await cadastrar(`/posts`, postagemParaEnvio, setPostagem, {
           headers: {
             Authorization: token,
           },
@@ -159,8 +161,13 @@ function FormPostagem() {
         </div>
         <div className="flex flex-col gap-2">
           <p>Tema da postagem</p>
-          <select name="theme" id="theme" className='border p-2 border-slate-800 rounded' onChange={(e) => buscar(`/themes/${e.currentTarget.value}`, setTema, { headers: { Authorization: token } })}>
-            <option value="" disabled selected>Selecione um tema</option>
+          <select 
+            name="theme" 
+            id="theme" 
+            className='border p-2 border-slate-800 rounded' 
+            defaultValue=""
+            onChange={(e) => buscar(`/themes/${e.currentTarget.value}`, setTema, { headers: { Authorization: token } })}>
+            <option value="" disabled>Selecione um tema</option>
             {temas.map((tema) => (
               <option key={tema.id} value={tema.id}>{tema.description}</option>
             ))}
