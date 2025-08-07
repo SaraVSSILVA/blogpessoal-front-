@@ -4,8 +4,7 @@ import type User from '../models/User'
 import type UserLogin from '../models/UserLogin'
 
 const api = axios.create({
-  baseURL: 'https://blogpessoal-nest-6jeu.onrender.com/',
-})
+baseURL: import.meta.env.VITE_API_URL})
 
 /**
  
