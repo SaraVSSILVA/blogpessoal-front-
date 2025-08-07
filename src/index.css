@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+/* Customização para o tema 'dark' */
+.Toastify__toast--success {
+    background-color: #3b5249 !important; /* Cor verde musgo */
+}
+
+.Toastify__toast--error {
+    background-color: #a04444 !important; /* Cor vermelha sóbria */
+}
+
+.Toastify__toast--info {
+    background-color: #314d64 !important; /* Cor azul escuro */
+}
