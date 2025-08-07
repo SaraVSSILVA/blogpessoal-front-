@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, type ReactNode, useState } from 'react'
 import type UserLogin from '../models/UserLogin'

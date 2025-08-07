@@ -1,0 +1,8 @@
+.home-image {
+  background-image: url('https://i.imgur.com/CBznbRK.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+}

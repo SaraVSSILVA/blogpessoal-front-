@@ -69,7 +69,7 @@ function Cadastro() {
         <div className="hidden lg:block relative">
           {' '}
           <img
-            src="https://i.imgur.com/G9L2p2H.jpg"
+            src="https://i.imgur.com/TYfdchX.png"
             alt="Imagem de fundo da vitrola"
             className="w-full h-screen object-cover"
           />{' '}
