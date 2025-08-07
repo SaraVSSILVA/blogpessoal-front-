@@ -7,5 +7,6 @@ export default interface Post {
   text: string
   date: string
   theme: Theme | null
-  username: User | null
+  username: Pick<User, 'id' | 'name' | 'photo'> | null
 }
+
